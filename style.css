@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *,
 *::before,
 *::after {
@@ -97,3 +98,64 @@ g {
   border: none;
   font-size: 5rem;
 }
+=======
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-weight: 600;
+}
+
+#myCanvas {
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  opacity: 0.2;
+}
+
+.colors {
+  display: flex;
+  width: 1100px;
+  justify-content: center;
+}
+.changeColor {
+  width: 200px;
+  height: 200px;
+}
+.chagneColor-red {
+  background-color: red;
+}
+.chagneColor-blue {
+  background-color: blue;
+}
+.chagneColor-green {
+  background-color: green;
+}
+.chagneColor-yellow {
+  background-color: yellow;
+}
+.chagneColor-purple {
+  background-color: purple;
+}
+
+.map-below {
+  width: 1100px;
+  height: 800px;
+}
+
+g {
+  opacity: 0.5;
+}
+>>>>>>> 280a4899818be10fe1789c737593960041b65c89
