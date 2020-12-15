@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *,
 *::before,
 *::after {
@@ -13,7 +12,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Langar", cursive;
   color: black;
   font-weight: 600;
 }
@@ -28,15 +27,16 @@ body {
 .colors {
   display: flex;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   cursor: pointer;
   color: white;
 }
 .changeColor {
+  bottom: 0;
   z-index: 20;
-  width: 200px;
-  height: 40px;
-  font-size: 2rem;
+  width: 30%;
+  height: 100px;
+  font-size: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,8 +58,8 @@ body {
 }
 
 .map-below {
-  width: 1500px;
-  height: 1000px;
+  width: 2400px;
+  height: 1050px;
 }
 
 g {
@@ -91,71 +91,39 @@ g {
 }
 
 .input {
-  background-color: transparent;
-  color: white;
+  background-color: white;
+  color: black;
   font-family: "Langar", cursive;
 
   border: none;
-  font-size: 5rem;
+  font-size: 3rem;
 }
-=======
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: inherit;
+.btn {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background-color: white;
+  margin: 2rem 0rem;
 }
-
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;
+.btn:focus {
+  outline: none;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  color: black;
-  font-weight: 600;
-}
-
-#myCanvas {
-  border: 1px solid black;
+.buttons {
   position: absolute;
-  top: 0;
-  opacity: 0.2;
-}
-
-.colors {
+  top: 2rem;
+  z-index: 200000;
+  right: 2rem;
   display: flex;
-  width: 1100px;
-  justify-content: center;
+  flex-direction: column;
 }
-.changeColor {
-  width: 200px;
-  height: 200px;
-}
-.chagneColor-red {
-  background-color: red;
-}
-.chagneColor-blue {
-  background-color: blue;
-}
-.chagneColor-green {
-  background-color: green;
-}
-.chagneColor-yellow {
-  background-color: yellow;
-}
-.chagneColor-purple {
-  background-color: purple;
+.popup {
+  display: flex;
 }
 
-.map-below {
-  width: 1100px;
-  height: 800px;
+.span-yea {
+  background-color: transparent;
+  color: white;
+  font-size: 4rem;
+  text-shadow: 0 0 20px #000;
 }
-
-g {
-  opacity: 0.5;
-}
->>>>>>> 280a4899818be10fe1789c737593960041b65c89
