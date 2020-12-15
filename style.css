@@ -127,3 +127,18 @@ g {
   font-size: 4rem;
   text-shadow: 0 0 20px #000;
 }
+
+.citySearch {
+  position: absolute;
+  z-index: 2000;
+  top: 10rem;
+  left: 20rem;
+  display: flex;
+}
+.citySearch-input {
+  font-size: 4rem;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  box-shadow: 5px 5px 20px black;
+}

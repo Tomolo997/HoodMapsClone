@@ -1,14 +1,43 @@
 let circleZoomMax = 18;
 let circleZoomMin = 13;
-let map = L.map("map", {
-  minZoom: circleZoomMin,
-  maxZoom: circleZoomMax,
-}).setView([46.5547, 15.6459], 15);
+let map;
+function loadMap(coords) {
+  map = L.map("map", {
+    minZoom: circleZoomMin,
+    maxZoom: circleZoomMax,
+  }).setView(coords, 15);
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+}
+function init() {
+  loadMap([46.5547, 15.6459]);
+}
+
+const getData = async function (city) {
+  try {
+    const response = await fetch(
+      `http://api.positionstack.com/v1/forward?access_key=32695ca2d7bda0ff957097a146fe53bc&query=${city}`
+    );
+    const data = response.json();
+    return data;
+  } catch (error) {}
+};
+
+init();
+let searced = false;
+const inputSearch = document.querySelector(".citySearch-input");
+const searchCityButton = document.querySelector(".btn-citySearch");
+searchCityButton.addEventListener("click", async function () {
+  const data = await getData(inputSearch.value);
+  console.log(data);
+  searced = true;
+  map.setView([data.data[0].latitude, data.data[0].longitude], 15);
+  searced != true;
+  inputSearch.value = "";
+});
 
 const canvas = document.querySelector("#myCanvas");
 const mapP = document.querySelector("#map");
