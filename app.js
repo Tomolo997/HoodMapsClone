@@ -1,13 +1,14 @@
 let circleZoomMax = 18;
-let circleZoomMin = 13;
+let circleZoomMin = 10;
+import regeneratorRuntime from 'regenerator-runtime';
 let map;
 function loadMap(coords) {
-  map = L.map("map", {
+  map = L.map('map', {
     minZoom: circleZoomMin,
     maxZoom: circleZoomMax,
   }).setView(coords, 15);
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
@@ -28,22 +29,22 @@ const getData = async function (city) {
 
 init();
 let searced = false;
-const inputSearch = document.querySelector(".citySearch-input");
-const searchCityButton = document.querySelector(".btn-citySearch");
-searchCityButton.addEventListener("click", async function () {
+const inputSearch = document.querySelector('.citySearch-input');
+const searchCityButton = document.querySelector('.btn-citySearch');
+searchCityButton.addEventListener('click', async function () {
   const data = await getData(inputSearch.value);
   console.log(data);
   searced = true;
   map.setView([data.data[0].latitude, data.data[0].longitude], 15);
   searced != true;
-  inputSearch.value = "";
+  inputSearch.value = '';
 });
 
-const canvas = document.querySelector("#myCanvas");
-const mapP = document.querySelector("#map");
-const drawButton = document.querySelector(".draw");
-const undrawButton = document.querySelector(".undraw");
-undrawButton.addEventListener("click", function () {
+const canvas = document.querySelector('#myCanvas');
+const mapP = document.querySelector('#map');
+const drawButton = document.querySelector('.draw');
+const undrawButton = document.querySelector('.undraw');
+undrawButton.addEventListener('click', function () {
   canvas.style.zIndex = 1;
   mapP.style.zIndex = 1;
   addTextBoolean = false;
@@ -55,8 +56,8 @@ let lat, lng;
 let position;
 let positionOnMap;
 let isDrawing = false;
-let ctx = canvas.getContext("2d");
-drawButton.addEventListener("click", function () {
+let ctx = canvas.getContext('2d');
+drawButton.addEventListener('click', function () {
   canvas.style.zIndex = 2;
   mapP.style.zIndex = -1;
 
@@ -77,11 +78,11 @@ drawButton.addEventListener("click", function () {
     position.x = xP;
     position.y = yP;
   };
-  const changeColor = document.querySelectorAll(".changeColor");
-  let color = "red";
-  ctx.strokeStyle = "red";
+  const changeColor = document.querySelectorAll('.changeColor');
+  let color = 'red';
+  ctx.strokeStyle = 'red';
   changeColor.forEach((el) =>
-    el.addEventListener("click", function (e) {
+    el.addEventListener('click', function (e) {
       ctx.strokeStyle = e.target.dataset.color;
       color = e.target.dataset.color;
     })
@@ -89,7 +90,7 @@ drawButton.addEventListener("click", function () {
   const mouseDraw = function (e) {
     if (!isDrawing) return;
 
-    ctx.lineCap = "round";
+    ctx.lineCap = 'round';
 
     color = ctx.strokeStyle;
     /*
@@ -127,6 +128,18 @@ drawButton.addEventListener("click", function () {
         desiredRadius = 200;
 
         break;
+      case 12:
+        desiredRadius = 400;
+
+        break;
+      case 11:
+        desiredRadius = 600;
+
+        break;
+      case 10:
+        desiredRadius = 1200;
+
+        break;
 
       default:
         break;
@@ -162,18 +175,18 @@ drawButton.addEventListener("click", function () {
   function stopDrawing() {
     isDrawing = false;
   }
-  canvas.addEventListener("mousedown", startDrawing);
-  canvas.addEventListener("mousemove", mouseDraw);
-  canvas.addEventListener("mouseup", stopDrawing);
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mousemove', mouseDraw);
+  canvas.addEventListener('mouseup', stopDrawing);
 });
 
 //add a text
-
-const addText = document.querySelector(".text");
-addText.addEventListener("click", function (e) {
+/*
+const addText = document.querySelector('.text');
+addText.addEventListener('click', function (e) {
   addTextBoolean = true;
   if (addTextBoolean) {
-    map.on("click", function (e) {
+    map.on('click', function (e) {
       console.log(e.latlng);
       let latlng = [e.latlng.lat - 0.0015, e.latlng.lng];
       let popup = L.popup({
@@ -184,32 +197,42 @@ addText.addEventListener("click", function (e) {
       })
         .setContent(
           `<div class="popup"><span class="span-yea"><span>
-          <input class='input'><button class='btn-yea'>yea</button><button class='btn-close'>close</button></div>`
+          <input class='input'><button class='btn-yea'>Submit</button><button class='btn-close'>close</button></div>`
         )
         .setLatLng(latlng)
         .openOn(map);
-      const buttonClose = document.querySelectorAll(".btn-close");
-      const inputPopUp = document.querySelectorAll(".input");
-      const addSpan = document.querySelectorAll(".span-yea");
-      const yeaSubmit = document.querySelectorAll(".btn-yea");
+      const buttonClose = document.querySelectorAll('.btn-close');
+      const inputPopUp = document.querySelectorAll('.input');
+      const addSpan = document.querySelectorAll('.span-yea');
+      const yeaSubmit = document.querySelectorAll('.btn-yea');
 
       buttonClose.forEach((el) =>
-        el.addEventListener("click", function (e) {
-          popup.setContent(" ");
+        el.addEventListener('click', function (e) {
+          popup.setContent('');
           map.removeLayer(popup);
         })
       );
+      const leafLetPopUp = document.querySelectorAll('.leaflet-popup');
+      const closeButton = document.querySelector('.leaflet-popup-close-button');
+      leafLetPopUp.forEach((el) =>
+        el.addEventListener('click', function () {
+          closeButton.style.display = 'block';
+        })
+      );
       yeaSubmit.forEach((el) =>
-        el.addEventListener("click", function (e) {
+        el.addEventListener('click', function (e) {
           console.log(e.target.parentElement.firstChild.nextSibling);
           e.target.parentElement.textContent =
             e.target.parentElement.firstChild.nextSibling.value;
         })
       );
     });
-    addTextBoolean = false;
   }
+  addTextBoolean = false;
 });
 
 console.log(innerHeight);
 console.log(innerWidth);
+
+//when i hover the pop up the close button shows
+*/

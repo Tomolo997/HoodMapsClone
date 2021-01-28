@@ -1,0 +1,24 @@
+{
+  "name": "01_hoodMaps",
+  "version": "1.0.0",
+  "description": "hoodmaps.com Clone",
+  "main": "app.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomolo997/HoodMapsClone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tomolo997/HoodMapsClone/issues"
+  },
+  "homepage": "https://github.com/Tomolo997/HoodMapsClone#readme",
+  "dependencies": {
+    "regenerator-runtime": "^0.13.7"
+  }
+}
