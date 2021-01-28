@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/Tomolo997/HoodMapsClone#readme",
   "dependencies": {
+    "config": "^3.3.3",
+    "config.js": "^0.1.0",
     "parcel": "^1.12.4",
     "regenerator-runtime": "^0.13.7"
   }

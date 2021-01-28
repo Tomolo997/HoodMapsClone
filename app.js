@@ -1,5 +1,5 @@
 import regeneratorRuntime from 'regenerator-runtime';
-import { API_KEY } from './config.js';
+import { API_KEY } from '/config.js';
 let circleZoomMax = 18;
 let circleZoomMin = 10;
 let map;
