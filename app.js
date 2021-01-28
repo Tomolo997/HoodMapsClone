@@ -1,5 +1,4 @@
 import regeneratorRuntime from 'regenerator-runtime';
-import { API_KEY } from '/config.js';
 let circleZoomMax = 18;
 let circleZoomMin = 10;
 let map;
@@ -22,7 +21,7 @@ console.log(key);
 const getData = async function (city) {
   try {
     const response = await fetch(
-      `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${key}`
+      `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=85e4ba3daac54c30927c3cd4df28ed86`
     );
     const data = response.json();
     return data;

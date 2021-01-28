@@ -868,21 +868,10 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"config.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.API_KEY = void 0;
-var API_KEY = '85e4ba3daac54c30927c3cd4df28ed86';
-exports.API_KEY = API_KEY;
 },{}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _regeneratorRuntime = _interopRequireDefault(require("regenerator-runtime"));
-
-var _config = require("./config.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -908,7 +897,7 @@ function init() {
   loadMap([46.5547, 15.6459]);
 }
 
-var key = _config.API_KEY;
+var key = API_KEY;
 console.log(key);
 
 var getData = /*#__PURE__*/function () {
@@ -920,7 +909,7 @@ var getData = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return fetch("https://api.opencagedata.com/geocode/v1/json?q=".concat(city, "&key=").concat(key));
+            return fetch("https://api.opencagedata.com/geocode/v1/json?q=".concat(city, "&key=85e4ba3daac54c30927c3cd4df28ed86"));
 
           case 3:
             response = _context.sent;
@@ -1169,7 +1158,7 @@ console.log(innerWidth);
 
 //when i hover the pop up the close button shows
 */
-},{"regenerator-runtime":"node_modules/regenerator-runtime/runtime.js","./config.js":"config.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime":"node_modules/regenerator-runtime/runtime.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1197,7 +1186,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52450" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56727" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
