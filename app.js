@@ -20,7 +20,7 @@ function init() {
 const getData = async function (city) {
   try {
     const response = await fetch(
-      `http://api.positionstack.com/v1/forward?access_key=32695ca2d7bda0ff957097a146fe53bc&query=${city}`
+      `https://api.positionstack.com/v1/forward?access_key=32695ca2d7bda0ff957097a146fe53bc&query=${city}`
     );
     const data = response.json();
     return data;
@@ -30,6 +30,7 @@ const getData = async function (city) {
 init();
 let searced = false;
 const inputSearch = document.querySelector('.citySearch-input');
+console.log(inputSearch);
 const searchCityButton = document.querySelector('.btn-citySearch');
 searchCityButton.addEventListener('click', async function () {
   const data = await getData(inputSearch.value);
