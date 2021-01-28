@@ -882,7 +882,7 @@ exports.API_KEY = API_KEY;
 
 var _regeneratorRuntime = _interopRequireDefault(require("regenerator-runtime"));
 
-var _config = _interopRequireDefault(require("./config"));
+var _config = require("./config.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -908,7 +908,8 @@ function init() {
   loadMap([46.5547, 15.6459]);
 }
 
-var key = _config.default;
+var key = _config.API_KEY;
+console.log(key);
 
 var getData = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.default.mark(function _callee(city) {
@@ -1168,7 +1169,7 @@ console.log(innerWidth);
 
 //when i hover the pop up the close button shows
 */
-},{"regenerator-runtime":"node_modules/regenerator-runtime/runtime.js","./config":"config.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime":"node_modules/regenerator-runtime/runtime.js","./config.js":"config.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1196,7 +1197,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50038" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51273" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
