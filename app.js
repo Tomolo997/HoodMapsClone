@@ -16,7 +16,6 @@ function loadMap(coords) {
 function init() {
   loadMap([46.5547, 15.6459]);
 }
-var key = API_KEY;
 console.log(key);
 const getData = async function (city) {
   try {
