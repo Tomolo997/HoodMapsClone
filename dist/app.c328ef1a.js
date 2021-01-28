@@ -868,10 +868,21 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
+},{}],"config.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.API_KEY = void 0;
+var API_KEY = '85e4ba3daac54c30927c3cd4df28ed86';
+exports.API_KEY = API_KEY;
 },{}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _regeneratorRuntime = _interopRequireDefault(require("regenerator-runtime"));
+
+var _config = _interopRequireDefault(require("./config"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -897,6 +908,8 @@ function init() {
   loadMap([46.5547, 15.6459]);
 }
 
+var key = _config.default;
+
 var getData = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.default.mark(function _callee(city) {
     var response, data;
@@ -906,7 +919,7 @@ var getData = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return fetch("http://api.positionstack.com/v1/forward?access_key=32695ca2d7bda0ff957097a146fe53bc&query=".concat(city));
+            return fetch("https://api.opencagedata.com/geocode/v1/json?q=".concat(city, "&key=").concat(key));
 
           case 3:
             response = _context.sent;
@@ -933,6 +946,7 @@ var getData = /*#__PURE__*/function () {
 init();
 var searced = false;
 var inputSearch = document.querySelector('.citySearch-input');
+console.log(inputSearch);
 var searchCityButton = document.querySelector('.btn-citySearch');
 searchCityButton.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.default.mark(function _callee2() {
   var data;
@@ -945,9 +959,9 @@ searchCityButton.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__
 
         case 2:
           data = _context2.sent;
-          console.log(data);
+          console.log(data.results[0]);
           searced = true;
-          map.setView([data.data[0].latitude, data.data[0].longitude], 15);
+          map.setView([data.results[0].geometry.lat, data.results[0].geometry.lng], 15);
           searced != true;
           inputSearch.value = '';
 
@@ -1154,7 +1168,7 @@ console.log(innerWidth);
 
 //when i hover the pop up the close button shows
 */
-},{"regenerator-runtime":"node_modules/regenerator-runtime/runtime.js"}],"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime":"node_modules/regenerator-runtime/runtime.js","./config":"config.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1182,7 +1196,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62236" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50038" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1358,5 +1372,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","app.js"], null)
+},{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js","app.js"], null)
 //# sourceMappingURL=/app.c328ef1a.js.map

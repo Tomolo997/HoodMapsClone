@@ -1,6 +1,7 @@
 let circleZoomMax = 18;
 let circleZoomMin = 10;
 import regeneratorRuntime from 'regenerator-runtime';
+import API_KEY from './config';
 let map;
 function loadMap(coords) {
   map = L.map('map', {
@@ -16,11 +17,11 @@ function loadMap(coords) {
 function init() {
   loadMap([46.5547, 15.6459]);
 }
-
+var key = API_KEY;
 const getData = async function (city) {
   try {
     const response = await fetch(
-      `https://api.positionstack.com/v1/forward?access_key=32695ca2d7bda0ff957097a146fe53bc&query=${city}`
+      `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${key}`
     );
     const data = response.json();
     return data;
@@ -34,9 +35,9 @@ console.log(inputSearch);
 const searchCityButton = document.querySelector('.btn-citySearch');
 searchCityButton.addEventListener('click', async function () {
   const data = await getData(inputSearch.value);
-  console.log(data);
+  console.log(data.results[0]);
   searced = true;
-  map.setView([data.data[0].latitude, data.data[0].longitude], 15);
+  map.setView([data.results[0].geometry.lat, data.results[0].geometry.lng], 15);
   searced != true;
   inputSearch.value = '';
 });
